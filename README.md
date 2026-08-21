@@ -38,20 +38,31 @@ Handle it by appending and the kitchen cooks two portions of fries. So
 Both look identical to a matcher that only records which words appeared. The
 order they were said in is the entire signal.
 
-## What speaks, and what listens
+## Two ways to run this
 
-Voho is a speech **synthesis** API. It speaks; it does not transcribe.
+**Let Voho be the whole agent.** A Voho voice agent answers the line, hears the
+caller in Saudi Arabic, works out what they actually want, takes the action in
+your systems, stops talking the moment it is interrupted, hands over to a
+person when it should, and leaves a bilingual transcript and summary behind.
+Hearing, deciding and speaking are all Voho's — you configure the agent and its
+actions rather than writing any of this. It is the fastest route to a live
+line.
 
-| Part | What does it | Where |
+**Or assemble it yourself, the way this repository does.** Here the
+conversation lives in code you can read line by line, the tools are yours, and
+Voho's Speech API provides the voice. Worth it when the script has to be
+reviewed before it goes anywhere near a caller, or when every part has to sit
+inside your own network.
+
+| Part | In this repository | With a Voho agent |
 | --- | --- | --- |
-| Speaking | **Voho** — voice `omar`, bright and quick, which suits a busy counter | [`voho.py`](voho.py) |
-| Listening | Twilio's transcription, Whisper, or your own recogniser | [`stt.py`](stt.py) |
-| Understanding | Matching against the menu, not a general model of language | [`intents.py`](intents.py) |
-| The order | Lines, options, corrections, VAT, the ticket | [`order.py`](order.py) |
+| Hearing the caller | whichever recogniser you point [`stt.py`](stt.py) at | Voho |
+| Deciding what to do | menu matching in [`intents.py`](intents.py) | Voho |
+| Acting in your systems | [`order.py`](order.py), into your POS | Voho actions, calling your API |
+| Speaking | Voho, via [`voho.py`](voho.py) | Voho |
+| Transcript and summary | yours to keep | Voho, in Arabic and English |
 
-Matching against the menu rather than a model is a deliberate choice: the menu
-is small and known, and every item carries the phrases callers really use for
-it — including the ones a dictionary would not have, like **موية** for water.
+Both end in the same place. Start with whichever suits the team you have.
 
 ## Quick start
 

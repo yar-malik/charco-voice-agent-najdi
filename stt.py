@@ -1,12 +1,14 @@
-"""Speech-to-text — the half Voho does not do.
+"""Speech-to-text, for the self-assembled route.
 
-Voho is a speech *synthesis* API: it speaks, it does not listen. So the
-listening half is pluggable, and this file is the seam. Two implementations
-ship here; add yours beside them and set `STT_PROVIDER`.
+This file exists because this example runs the conversation itself. A Voho
+voice agent already does the listening — it hears the caller in Saudi Arabic,
+decides what to do and speaks back, and none of this file is involved. Reach
+for it when you are driving the conversation from your own code and only using
+Voho for the voice.
 
-Whatever you use, it has to be good at Saudi Arabic specifically. A model
-that scores well on Modern Standard Arabic can still mishear Najdi, and on a
-booking call a misheard day is a wasted appointment.
+Whatever you use has to be good at Saudi Arabic specifically. A model that
+scores well on Modern Standard can still mishear Najdi, and on a live call a
+misheard detail is a wasted booking.
 """
 
 from __future__ import annotations
