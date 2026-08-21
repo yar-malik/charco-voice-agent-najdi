@@ -1,10 +1,12 @@
 """Voho speech client.
 
-Voho does the speaking. Everything it exposes is here: synthesis, the
-streaming variant, the voice catalogue, and the Arabic text normaliser that
-decides how a number or a date is read out loud.
+The Speech API: synthesis, the streaming variant, the voice catalogue, and the
+Arabic text normaliser that decides how a number or a date is read out loud.
 
-Speech-to-text is deliberately not in this file — see `stt.py`.
+This is the half of Voho you call from your own code. The other half is a
+complete voice agent that also does the listening and the deciding — see
+https://docs.voho.ai/concepts. `stt.py` exists for the route this repository
+takes, where the conversation is yours and only the voice is Voho's.
 """
 
 from __future__ import annotations
@@ -34,13 +36,23 @@ class VohoError(RuntimeError):
     pass
 
 
+MISSING_KEY = """No Voho API key.
+
+  Run:  python setup.py
+
+It walks you through creating one at https://app.voho.ai (API Tokens),
+checks it against the live voice catalogue, and writes it to .env."""
+
+
+def has_key() -> bool:
+    return bool(API_KEY) and not API_KEY.startswith("voho_sk_live_xxx")
+
+
 def _headers() -> dict[str, str]:
-    if not API_KEY:
-        raise VohoError(
-            "VOHO_API_KEY is not set. Create a token at https://app.voho.ai "
-            "under API Tokens and put it in .env"
-        )
+    if not has_key():
+        raise VohoError(MISSING_KEY)
     return {"Authorization": f"Bearer {API_KEY}"}
+
 
 
 def speak(

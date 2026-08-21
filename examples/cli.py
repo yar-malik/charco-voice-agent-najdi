@@ -46,7 +46,20 @@ def say(turn: int, text: str) -> None:
     print(f"        \033[2m{path} · {len(audio) // 1024} KB · voice {voho.DEFAULT_VOICE}\033[0m")
 
 
+def preflight() -> None:
+    """Ask for a key up front rather than failing on every synthesised line."""
+    if SILENT or voho.has_key():
+        return
+    print(
+        "\n  \033[33mNo Voho key yet.\033[0m The voice is the point of this —"
+        "\n  \033[2mrun\033[0m python setup.py \033[2mto get one (a minute, at app.voho.ai),\033[0m"
+        "\n  \033[2mor pass\033[0m --silent \033[2mto read the conversation without audio.\033[0m\n"
+    )
+    raise SystemExit(1)
+
+
 def main() -> None:
+    preflight()
     convo = agent_mod.Agent(caller="+966500000000")
     print("\033[2m  Type what the caller says. Enter on its own runs the script. Ctrl-C to stop.\033[0m")
 
