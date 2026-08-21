@@ -1,0 +1,143 @@
+{
+  "restaurant": {
+    "name_ar": "مطعم شاركو",
+    "name_en": "Charco",
+    "vat_rate": 0.15
+  },
+  "items": [
+    {
+      "sku": "GC-01",
+      "name_ar": "وجبة دجاج مشوي",
+      "name_en": "Grilled chicken meal",
+      "price": 29.0,
+      "category": "main",
+      "says": [
+        "دجاج مشوي",
+        "دجاج",
+        "مشوي",
+        "وجبة دجاج",
+        "grilled chicken",
+        "chicken"
+      ],
+      "options": {
+        "spice": {
+          "says_ar": {
+            "حار": "spicy",
+            "حاره": "spicy",
+            "سبايسي": "spicy",
+            "عادي": "plain",
+            "عاديه": "plain"
+          },
+          "default": "plain",
+          "label_ar": {
+            "spicy": "حار",
+            "plain": "عادي"
+          }
+        }
+      }
+    },
+    {
+      "sku": "GC-02",
+      "name_ar": "نص دجاجة مشوية",
+      "name_en": "Half grilled chicken",
+      "price": 22.0,
+      "category": "main",
+      "says": [
+        "نص دجاجة",
+        "نص دجاجه",
+        "نصف دجاجة",
+        "half chicken"
+      ],
+      "options": {
+        "spice": {
+          "says_ar": {
+            "حار": "spicy",
+            "حاره": "spicy",
+            "عادي": "plain"
+          },
+          "default": "plain",
+          "label_ar": {
+            "spicy": "حار",
+            "plain": "عادي"
+          }
+        }
+      }
+    },
+    {
+      "sku": "SD-01",
+      "name_ar": "بطاطس",
+      "name_en": "Fries",
+      "price": 14.0,
+      "category": "side",
+      "says": [
+        "بطاطس",
+        "بطاطا",
+        "fries"
+      ],
+      "options": {
+        "size": {
+          "says_ar": {
+            "صغير": "small",
+            "صغيره": "small",
+            "متوسط": "medium",
+            "متوسطه": "medium",
+            "وسط": "medium",
+            "كبير": "large",
+            "كبيره": "large"
+          },
+          "default": "medium",
+          "price_delta": {
+            "small": -4.0,
+            "medium": 6.0,
+            "large": 10.0
+          },
+          "label_ar": {
+            "small": "صغير",
+            "medium": "متوسط",
+            "large": "كبير"
+          }
+        }
+      }
+    },
+    {
+      "sku": "SD-02",
+      "name_ar": "سلطة كولسلو",
+      "name_en": "Coleslaw",
+      "price": 9.0,
+      "category": "side",
+      "says": [
+        "كولسلو",
+        "سلطة",
+        "سلطه",
+        "coleslaw",
+        "salad"
+      ]
+    },
+    {
+      "sku": "DR-01",
+      "name_ar": "بيبسي",
+      "name_en": "Pepsi",
+      "price": 6.0,
+      "category": "drink",
+      "says": [
+        "بيبسي",
+        "بيبسي كولا",
+        "pepsi",
+        "cola"
+      ]
+    },
+    {
+      "sku": "DR-02",
+      "name_ar": "ماء",
+      "name_en": "Water",
+      "price": 2.0,
+      "category": "drink",
+      "says": [
+        "ماء",
+        "موية",
+        "مويه",
+        "water"
+      ]
+    }
+  ]
+}
