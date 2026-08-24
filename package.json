@@ -1,0 +1,12 @@
+{
+  "name": "charco-voice-agent-najdi",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A restaurant voice agent that takes phone orders in Najdi Saudi Arabic — including the change of mind halfway through — prices them VAT-inclusive and sends the ticket to the kitchen. Built on the Voho speech API.",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node examples/node/index.mjs"
+  },
+  "license": "MIT"
+}
