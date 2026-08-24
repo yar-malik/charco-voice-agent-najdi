@@ -85,52 +85,44 @@ Both end in the same place. Start with whichever suits the team you have.
 
 ## Quick start
 
-You need a Voho API key — `setup.py` walks you through getting one at
-[app.voho.ai](https://app.voho.ai) under **API Tokens**, checks it against the
-live voice catalogue so a typo fails now rather than on a call, and writes it
-to `.env`.
+One key, one command, about a minute. Get a key at
+[app.voho.ai/tokens](https://app.voho.ai/tokens) — new accounts start with
+**$25 of credit**, which is enough to run this many times over.
 
 ```bash
 git clone https://github.com/yar-malik/charco-voice-agent-najdi.git
 cd charco-voice-agent-najdi
-pip install -r requirements.txt
-python setup.py           # asks for your Voho key and verifies it
+export VOHO_API_KEY=voho_sk_live_...
 ```
 
-### In the terminal
+### Node — no dependencies, Node 18+
 
 ```bash
-python examples/cli.py
+npm start
+# or: node examples/node/index.mjs ["what the caller says"]
 ```
 
-```
-  Voho  مطعم شاركو، معك عمر. تحت أمرك.
-Caller  أبغى وجبتين دجاج مشوي، وحدة حارة ووحدة عادية
-  Voho  تمام. أضيف لك مقبلات أو مشروبات؟
-Caller  إيه، بطاطس كبير. لا لا، خلها متوسط
-  Voho  طلبك: وجبة دجاج مشوي حار، ووجبة دجاج مشوي عادي، وبطاطس متوسط. الإجمالي 78.00 ريال.
-```
-
-Every reply is synthesised to `out/`. Add `--silent` to skip that.
-
-### With a UI
+### Python — no dependencies, Python 3.9+
 
 ```bash
-streamlit run ui.py
+python examples/python/main.py ["what the caller says"]
 ```
 
-Type in Arabic, hear the reply, watch the ticket build beside it. This is the
-one to hand to someone who needs to tell you whether the agent understood them.
+Either one speaks a line in Najdi Arabic and writes voho.mp3. Set VOHO_AGENT_ID and it holds a conversation instead, writing the reply as reply.mp3.
 
-### On a real number
+### Have it answer back
+
+Speaking a line needs nothing but a key. To hold a conversation, create an
+agent at [app.voho.ai/agents](https://app.voho.ai/agents) — pick a template,
+edit the prompt — then take its id from the URL:
 
 ```bash
-export PUBLIC_URL=https://your-tunnel.ngrok.io
-python app.py
+export VOHO_AGENT_ID=...        # from app.voho.ai/agents/<id>
+npm start "أبي أعرف عن خدماتكم"
 ```
 
-Point a Twilio number's **Voice** webhook at `POST /voice`. Finished tickets go
-to `POS_URL` if you set it, and are always readable at `GET /api/orders`.
+The agent answers from its own prompt, in its own voice, and `reply.mp3` is
+what the caller would have heard.
 
 ## The menu
 
